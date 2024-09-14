@@ -10,7 +10,7 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Blogs", link: "/blogs" },
-      { text: "Assignments", link: "/asssignments" },
+      { text: "Assignments", link: "/assignments" },
       { text: "About Me", link: "/about" },
     ],
 
@@ -20,7 +20,7 @@ export default defineConfig({
         link: "/blogs",
       },
       {
-        text: "Asssignments",
+        text: "Assignments",
         link: "/assignments",
       },
       {
