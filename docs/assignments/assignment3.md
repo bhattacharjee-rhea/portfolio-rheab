@@ -7,7 +7,7 @@ layout: doc
 
 ## Pitch
 
-*Updates* is an app for people who want to connect with other people while at the same time having more control over their online image. Users can present different content to different audiences, so they do not have to be concerned with maintaining one single persona for their account. Users follow other accounts to see the content posted by those accounts. Instead of receiving all the content posted by those accounts, however, the user only sees the content those accounts want the user to see. A user groups their followers: the user can create one group of close friends, another group of family, and a third group of coworkers. The user then has the ability to deliver different content to different groups by selecting which groups can view and which groups can react to the content that user posts. A user could post vacation updates to all their followers, but only allow their family to react. That user could also post an inside joke that only their close friends can see and react to. With these features, users create the online space that they want to experience, sharing *updates* with their friends.
+*Updates* is an app for people who want to connect with other people while at the same time want to have more control over their online image. Users can present different content to different audiences, so they do not have to be concerned with maintaining one single persona for their account. Users follow other accounts to see the content posted by those accounts. Instead of receiving all the content posted by those accounts, however, the user only sees the content those accounts want the user to see. A user groups their followers: the user can create one group of close friends, another group of family, and a third group of coworkers. The user then has the ability to deliver different content to different groups by selecting which groups can view and which groups can react to the content that user posts. A user could post vacation updates to all their followers, but only allow their family to react. That user could also post an inside joke that only their close friends can see and react to. With these features, users create the online space that they want to experience, sharing *updates* with their friends.
 
 ## Concepts
 
@@ -48,7 +48,7 @@ actions
 ```
 concept Posting[Account]
 purpose users can share content with other users
-principle after creating a post, until that post is deleted, that post will be returned by getPosts
+principle after creating a post, until that post is deleted, that post will be returned
 state
 	posted: set Post
 	content: Post → one String
@@ -65,7 +65,7 @@ actions
 ```
 concept Following[Account]
 purpose users can connect with other users of the app
-principle when an account follows another account, the isFollowing will return true as long as the first account does not unfollow the second account and getFollowers(second account) will include the first account
+principle when an account follows another account, isFollowing will return true as long as the first account does not unfollow the second account and getFollowers(second account) will include the first account
 state
 	follows: set Follow
 	user: Follow → one Account
@@ -206,7 +206,7 @@ app Updates
 		Posting.delete(post)
 
 	sync viewPosts(group: Group, out posts: set Post):
-		Posting.getPosts(posts).filter(post: Post → Permitting.canView(group, post, allowed))
+		Posting.getPosts(posts).filter(post: Post -> Permitting.canView(group, post, allowed))
 			
     sync likePost(group: Group, posts: Post, out like: Like):
             if Permitting.canLike(group, post, allowed):
@@ -219,7 +219,6 @@ app Updates
 ## Dependency diagram
 
 <img src="../img/a3_dependency.png" alt="dependency diagram" width="50%"/>
-
 
 ## Wireframes
 
