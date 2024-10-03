@@ -64,7 +64,7 @@ state
 concept Permitting[Group, Post]
 state
 	permissions: set Permission
-	groups: Permission → some Group
+	groups: Permission → one Group
     post: Permission → one Post
     view: Permission → one Bool
     like: Permission → one Bool
